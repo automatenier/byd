@@ -663,13 +663,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('submit-form');
     const creditTenorGroup = document.getElementById('credit-tenor-group');
     const paymentOptions = document.querySelectorAll('input[name="payment_plan"]');
+    const serviceOptions = document.querySelectorAll('input[name="form_service"]');
 
     let currentStep = 0;
 
+    const handleRadioChange = (e) => {
+        const inputName = e.target.name;
+        document.querySelectorAll(`input[name="${inputName}"]`).forEach(input => {
+            const wrapper = input.closest('.radio-option');
+            if (wrapper) wrapper.classList.remove('selected');
+        });
+        const activeWrapper = e.target.closest('.radio-option');
+        if (activeWrapper) activeWrapper.classList.add('selected');
+    };
+
     paymentOptions.forEach(option => {
         option.addEventListener('change', (e) => {
-            document.querySelectorAll('.radio-option').forEach(el => el.classList.remove('selected'));
-            e.target.closest('.radio-option').classList.add('selected');
+            handleRadioChange(e);
 
             if (e.target.value === 'Kredit') {
                 creditTenorGroup.style.display = 'block';
@@ -680,6 +690,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    if (serviceOptions) {
+        serviceOptions.forEach(option => {
+            option.addEventListener('change', handleRadioChange);
+        });
+    }
 
     function updateFormSteps() {
         steps.forEach((step, idx) => {
@@ -760,27 +776,40 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = document.getElementById('form-name').value.trim();
             const phone = document.getElementById('form-phone').value.trim();
             const model = document.getElementById('form-model').value;
-            const service = document.getElementById('form-service').value;
+            const service = document.querySelector('input[name="form_service"]:checked').value;
             const paymentPlan = document.querySelector('input[name="payment_plan"]:checked').value;
             const timing = document.getElementById('form-timing').value;
             const tenor = document.getElementById('form-tenor').value;
 
             let message = `Halo *Jordan Byd Jabodetabek (Brand Consultant BYD)*,\n`;
-            message += `Saya ingin mengajukan *${service}* untuk mobil BYD melalui website.\n\n`;
-            message += `*Data Diri:*\n`;
-            message += `- Nama: ${name}\n`;
-            message += `- Kontak: ${phone}\n\n`;
-            message += `*Detail Permintaan:*\n`;
-            message += `- Model Mobil: ${model}\n`;
-            message += `- Rencana Layanan: ${service}\n`;
-            message += `- Rencana Pembayaran: ${paymentPlan}\n`;
             
-            if (paymentPlan === 'Kredit') {
-                message += `- Rencana Tenor: ${tenor}\n`;
+            if (service === 'Test Drive') {
+                message += `Saya tertarik untuk menjadwalkan *Test Drive* mobil BYD melalui website.\n\n`;
+                message += `*Data Calon Pengemudi:*\n`;
+                message += `- Nama Lengkap: ${name}\n`;
+                message += `- Nomor Telepon/WA: ${phone}\n\n`;
+                message += `*Detail Rencana Test Drive:*\n`;
+                message += `- Model Mobil: ${model}\n`;
+                message += `- Rencana Pembayaran: ${paymentPlan}\n`;
+                if (paymentPlan === 'Kredit') {
+                    message += `- Rencana Tenor: ${tenor}\n`;
+                }
+                message += `- Rencana Kunjungan: ${timing}\n\n`;
+                message += `Mohon info ketersediaan unit dan jadwal test drive. Terima kasih.`;
+            } else {
+                message += `Saya tertarik untuk melakukan *Pre-Book / Pemesanan* mobil BYD melalui website.\n\n`;
+                message += `*Data Pemesan:*\n`;
+                message += `- Nama Lengkap: ${name}\n`;
+                message += `- Nomor Telepon/WA: ${phone}\n\n`;
+                message += `*Detail Unit Booking:*\n`;
+                message += `- Model Mobil: ${model}\n`;
+                message += `- Rencana Pembayaran: ${paymentPlan}\n`;
+                if (paymentPlan === 'Kredit') {
+                    message += `- Rencana Tenor: ${tenor}\n`;
+                }
+                message += `- Rencana Pemesanan: ${timing}\n\n`;
+                message += `Mohon dibantu info syarat pemesanan dan promo penawaran terbaiknya. Terima kasih.`;
             }
-            
-            message += `- Rencana Pemesanan: ${timing}\n\n`;
-            message += `Mohon info dan penawaran terbaiknya. Terima kasih.`;
 
             const waNumber = '6287881647878';
             const waUrl = `https://wa.me/${waNumber}/?text=${encodeURIComponent(message)}`;
@@ -806,10 +835,15 @@ window.triggerServiceAction = function(serviceType, modelKey) {
         window.switchModel(modelKey);
     }
 
-    // Set service value in dropdown
-    const serviceSelect = document.getElementById('form-service');
-    if (serviceSelect) {
-        serviceSelect.value = serviceType;
+    // Set service value in radio buttons
+    const serviceRadio = document.querySelector(`input[name="form_service"][value="${serviceType}"]`);
+    if (serviceRadio) {
+        serviceRadio.checked = true;
+        const parentLabel = serviceRadio.closest('.radio-option');
+        if (parentLabel) {
+            parentLabel.parentElement.querySelectorAll('.radio-option').forEach(el => el.classList.remove('selected'));
+            parentLabel.classList.add('selected');
+        }
     }
 
     // Scroll to form smoothly

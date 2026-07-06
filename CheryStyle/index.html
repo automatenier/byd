@@ -148,23 +148,8 @@
                     </div>
                 </li>
                 
-                <!-- Mega Dropdown Buy Your BYD (Chery Style) -->
-                <li class="nav-item has-children">
-                    <a href="#">Buy Your BYD <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></a>
-                    <div class="mega-menu" style="width: 250px;">
-                        <ul class="mega-list">
-                            <li><a href="#form-booking"><span class="name">Find BYD Dealer</span></a></li>
-                            <li><a href="#form-booking"><span class="name">Credit Program & Simulation</span></a></li>
-                            <li><a href="#form-booking"><span class="name">Test Drive & Prebooking</span></a></li>
-                            <li><a href="#" class="open-pricelist"><span class="name">BYD Solutions</span></a></li>
-                        </ul>
-                    </div>
-                </li>
-                
                 <li class="nav-item"><a href="#form-booking">Test Drive</a></li>
-                <li class="nav-item"><a href="#form-booking">Simulasi Kredit</a></li>
                 <li class="nav-item"><a href="#" class="open-pricelist">Daftar Harga</a></li>
-                <li class="nav-item"><a href="#contact-footer">Kontak</a></li>
                 
                 <li class="nav-agent">
                     <div class="agent-mini-pic">
@@ -592,11 +577,17 @@
                             <!-- STEP 2: Product Info -->
                             <div class="form-step" data-step="2">
                                 <div class="form-group">
-                                    <label for="form-service">Tipe Layanan <span style="color: var(--primary);">*</span></label>
-                                    <select id="form-service" class="form-control" required>
-                                        <option value="Test Drive">Jadwalkan Test Drive</option>
-                                        <option value="Pre-Book">Pre-Book / Pemesanan</option>
-                                    </select>
+                                    <label>Tipe Layanan <span style="color: var(--primary);">*</span></label>
+                                    <div class="radio-group">
+                                        <label class="radio-option selected">
+                                            <input type="radio" name="form_service" value="Test Drive" checked>
+                                            <span><i class="fa-solid fa-car"></i> Test Drive</span>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="form_service" value="Pre-Book">
+                                            <span><i class="fa-solid fa-file-invoice-dollar"></i> Pre-Book</span>
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="form-model">Pilih Model Mobil <span style="color: var(--primary);">*</span></label>
