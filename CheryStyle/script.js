@@ -760,17 +760,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = document.getElementById('form-name').value.trim();
             const phone = document.getElementById('form-phone').value.trim();
             const model = document.getElementById('form-model').value;
+            const service = document.getElementById('form-service').value;
             const paymentPlan = document.querySelector('input[name="payment_plan"]:checked').value;
             const timing = document.getElementById('form-timing').value;
             const tenor = document.getElementById('form-tenor').value;
 
-            let message = `Halo *Jordan Byd JAbodetabek (Brand Consultant BYD)*,\n`;
-            message += `Saya tertarik untuk melakukan pemesanan/test drive mobil BYD dari website.\n\n`;
+            let message = `Halo *Jordan Byd Jabodetabek (Brand Consultant BYD)*,\n`;
+            message += `Saya ingin mengajukan *${service}* untuk mobil BYD melalui website.\n\n`;
             message += `*Data Diri:*\n`;
             message += `- Nama: ${name}\n`;
             message += `- Kontak: ${phone}\n\n`;
             message += `*Detail Permintaan:*\n`;
             message += `- Model Mobil: ${model}\n`;
+            message += `- Rencana Layanan: ${service}\n`;
             message += `- Rencana Pembayaran: ${paymentPlan}\n`;
             
             if (paymentPlan === 'Kredit') {
@@ -791,4 +793,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set BYD Atto 1 as the default showcased car on initial page load
     window.switchModel('byd-atto-1');
+});
+
+// === GLOBAL SERVICE TRIGGER ACTION ===
+window.triggerServiceAction = function(serviceType, modelKey) {
+    // Close modal if open
+    const promoModal = document.getElementById('promo-modal');
+    if (promoModal) promoModal.classList.remove('open');
+
+    // If modelKey is specified, switch showcased model
+    if (modelKey) {
+        window.switchModel(modelKey);
+    }
+
+    // Set service value in dropdown
+    const serviceSelect = document.getElementById('form-service');
+    if (serviceSelect) {
+        serviceSelect.value = serviceType;
+    }
+
+    // Scroll to form smoothly
+    const formBooking = document.getElementById('form-booking');
+    if (formBooking) {
+        setTimeout(() => {
+            formBooking.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Focus first input field
+            const nameInput = document.getElementById('form-name');
+            if (nameInput) nameInput.focus();
+        }, modelKey ? 300 : 0);
+    }
+};
+
+// === PROMOTIONAL MODAL POPUP LOGIC ===
+document.addEventListener('DOMContentLoaded', () => {
+    const promoModal = document.getElementById('promo-modal');
+    const promoCloseBtn = document.getElementById('promo-close-btn');
+    const promoActionBtn = document.getElementById('promo-action-btn');
+
+    if (promoModal) {
+        // Open after 3 seconds on page load
+        setTimeout(() => {
+            const drawer = document.getElementById('pricelist-drawer');
+            if (!drawer || !drawer.classList.contains('open')) {
+                promoModal.classList.add('open');
+            }
+        }, 3000);
+
+        if (promoCloseBtn) {
+            promoCloseBtn.addEventListener('click', () => {
+                promoModal.classList.remove('open');
+            });
+        }
+
+        if (promoActionBtn) {
+            promoActionBtn.addEventListener('click', () => {
+                window.triggerServiceAction('Test Drive', 'byd-atto-1');
+            });
+        }
+
+        promoModal.addEventListener('click', (e) => {
+            if (e.target === promoModal) {
+                promoModal.classList.remove('open');
+            }
+        });
+    }
 });

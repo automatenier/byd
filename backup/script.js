@@ -245,7 +245,13 @@ window.switchModel = function(modelKey) {
     const data = modelsData[modelKey];
     if (!data) return;
 
-    // Update Detail section title block
+    // Update Hero headers
+    const heroTitle = document.querySelector('.hero-title');
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    if (heroTitle) heroTitle.textContent = data.name;
+    if (heroSubtitle) heroSubtitle.textContent = data.tagline;
+
+    // Update Title block
     const titleHeader = document.querySelector('.model-title-area h1');
     if (titleHeader) titleHeader.textContent = data.name;
     
@@ -385,6 +391,7 @@ window.switchModel = function(modelKey) {
             if (videoActionWrapper) videoActionWrapper.style.display = 'block';
             if (iframe) iframe.src = data.youtube;
             
+            // Extract Video ID to construct direct watch link
             const videoId = data.youtube.split('/').pop().split('?')[0];
             if (videoYoutubeLink) videoYoutubeLink.href = `https://www.youtube.com/watch?v=${videoId}`;
         } else {
@@ -427,10 +434,10 @@ window.switchModel = function(modelKey) {
         if (menuToggleIcon) menuToggleIcon.classList.replace('fa-times', 'fa-bars');
     }
 
-    // Scroll smoothly to details portal
-    const modelDetailsPortal = document.getElementById('model-portal');
-    if (modelDetailsPortal) {
-        modelDetailsPortal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Scroll smoothly to details
+    const modelHeader = document.querySelector('.model-header');
+    if (modelHeader) {
+        modelHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 };
 
@@ -451,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Toggle dropdowns/mega-menus in mobile menu
+    // Toggle dropdowns in mobile menu
     const navItems = document.querySelectorAll('.nav-item > a');
     navItems.forEach(item => {
         item.addEventListener('click', (e) => {
@@ -461,77 +468,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // === HERO CAROUSEL LOGIC ===
-    const slides = document.querySelectorAll('.carousel-slide');
-    const prevSlideBtn = document.querySelector('.carousel-control.prev');
-    const nextSlideBtn = document.querySelector('.carousel-control.next');
-    const indicators = document.querySelectorAll('.carousel-indicators .indicator');
-    
-    let currentSlide = 0;
-    let slideInterval;
-
-    function showSlide(idx) {
-        slides.forEach(s => s.classList.remove('active'));
-        indicators.forEach(i => i.classList.remove('active'));
-        
-        currentSlide = (idx + slides.length) % slides.length;
-        slides[currentSlide].classList.add('active');
-        indicators[currentSlide].classList.add('active');
-    }
-
-    function nextSlide() {
-        showSlide(currentSlide + 1);
-    }
-
-    function prevSlide() {
-        showSlide(currentSlide - 1);
-    }
-
-    function startSlideShow() {
-        clearInterval(slideInterval);
-        slideInterval = setInterval(nextSlide, 6000);
-    }
-
-    if (slides.length) {
-        if (nextSlideBtn) {
-            nextSlideBtn.addEventListener('click', () => {
-                nextSlide();
-                startSlideShow();
-            });
-        }
-        if (prevSlideBtn) {
-            prevSlideBtn.addEventListener('click', () => {
-                prevSlide();
-                startSlideShow();
-            });
-        }
-        indicators.forEach((ind, idx) => {
-            ind.addEventListener('click', () => {
-                showSlide(idx);
-                startSlideShow();
-            });
-        });
-        startSlideShow();
-    }
-
-    // === LINEUP TABS LOGIC ===
-    const lineupTabs = document.querySelectorAll('.lineup-tab');
-    const lineupGrids = document.querySelectorAll('.lineup-grid');
-
-    if (lineupTabs.length && lineupGrids.length) {
-        lineupTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                lineupTabs.forEach(t => t.classList.remove('active'));
-                lineupGrids.forEach(g => g.classList.remove('active'));
-
-                tab.classList.add('active');
-                const targetId = `lineup-${tab.getAttribute('data-type')}`;
-                const targetGrid = document.getElementById(targetId);
-                if (targetGrid) targetGrid.classList.add('active');
-            });
-        });
-    }
 
     // === COLOR SELECTOR INIT ===
     const colorDots = document.querySelectorAll('.color-dot');

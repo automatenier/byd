@@ -9,13 +9,13 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR (Chery Style) -->
     <nav class="navbar">
         <div class="container navbar-content">
             <a href="#" class="logo">
@@ -57,7 +57,7 @@
             <ul class="nav-links">
                 <li class="nav-item active"><a href="#">Home</a></li>
                 
-                <!-- Mega Dropdown Trigger -->
+                <!-- Mega Dropdown Models (Chery Style) -->
                 <li class="nav-item has-children">
                     <a href="#lineup">Models <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></a>
                     <div class="mega-menu">
@@ -135,7 +135,7 @@
                                 <ul class="mega-list">
                                     <li>
                                         <a href="#" onclick="switchModel('byd-m6-dm'); return false;">
-                                            <img src="https://bydjakarta.info/wp-content/uploads/2026/06/M6-DM-300x200.jpg" alt="M6 DM" style="width: 75px; height: 50px; object-fit: cover; border-radius: 4px;">
+                                            <img src="https://bydjakarta.info/wp-content/uploads/2026/06/M6-DM-300x200.jpg" alt="M6 DM">
                                             <div>
                                                 <span class="name">BYD M6 DM</span>
                                                 <span class="desc">Hybrid MPV</span>
@@ -145,6 +145,19 @@
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                </li>
+                
+                <!-- Mega Dropdown Buy Your BYD (Chery Style) -->
+                <li class="nav-item has-children">
+                    <a href="#">Buy Your BYD <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></a>
+                    <div class="mega-menu" style="width: 250px;">
+                        <ul class="mega-list">
+                            <li><a href="#form-booking"><span class="name">Find BYD Dealer</span></a></li>
+                            <li><a href="#form-booking"><span class="name">Credit Program & Simulation</span></a></li>
+                            <li><a href="#form-booking"><span class="name">Test Drive & Prebooking</span></a></li>
+                            <li><a href="#" class="open-pricelist"><span class="name">BYD Solutions</span></a></li>
+                        </ul>
                     </div>
                 </li>
                 
@@ -170,45 +183,66 @@
         </div>
     </div>
 
-    <!-- HERO CAROUSEL (Chery-Style) -->
+    <!-- HERO CAROUSEL (Chery-Style Full Screen Banner) -->
     <section class="hero-carousel" id="hero-carousel">
         <div class="carousel-container">
-            <!-- Slide 1: Denza D9 -->
-            <div class="carousel-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.75)), url('https://bydjakarta.info/wp-content/uploads/2025/11/denza-d9-Whale-Sea-Blue.webp');">
-                <div class="container slide-content">
-                    <span class="slide-tag">FLAGSHIP EV MPV</span>
-                    <h1 class="slide-title">BYD DENZA D9</h1>
-                    <p class="slide-desc">MPV Listrik Mewah Premium Untuk Keluarga Modern & Eksekutif Berkelas.</p>
-                    <div class="slide-price">Starts from <strong>IDR 950.000.000</strong></div>
-                    <div class="slide-actions">
-                        <a href="#form-booking" class="btn btn-primary">Pre-Book Now</a>
-                        <button class="btn btn-outline" onclick="switchModel('byd-denza-d9'); return false;">See Details</button>
+            <!-- Slide 1: Atto 1 -->
+            <div class="carousel-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.75)), url('https://bydjakarta.info/wp-content/uploads/2025/11/atto-1-1.webp');">
+                <div class="container">
+                    <div class="slide-content">
+                        <span class="slide-tag">COMPACT EV HATCHBACK</span>
+                        <h1 class="slide-title">BYD ATTO 1</h1>
+                        <p class="slide-desc">Hatchback Listrik Kompak Modern yang Stylish dan Dinamis untuk Mobilitas Perkotaan.</p>
+                        <div class="slide-price">Starts from <strong>IDR 199.000.000</strong></div>
+                        <div class="slide-actions">
+                            <button class="btn btn-primary" onclick="triggerServiceAction('Pre-Book', 'byd-atto-1')">Pre-Book Now</button>
+                            <button class="btn btn-outline" onclick="switchModel('byd-atto-1'); return false;">See Details</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Slide 2: Seal -->
+            <!-- Slide 2: M6 -->
+            <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.75)), url('https://bydjakarta.info/wp-content/uploads/2025/04/m6.webp');">
+                <div class="container">
+                    <div class="slide-content">
+                        <span class="slide-tag">FAMILY ELECTRIC MPV</span>
+                        <h1 class="slide-title">BYD M6</h1>
+                        <p class="slide-desc">Medium MPV Listrik 7 Seater Pertama di Indonesia untuk Kenyamanan Keluarga.</p>
+                        <div class="slide-price">Starts from <strong>IDR 383.000.000</strong></div>
+                        <div class="slide-actions">
+                            <button class="btn btn-primary" onclick="triggerServiceAction('Pre-Book', 'byd-m6')">Pre-Book Now</button>
+                            <button class="btn btn-outline" onclick="switchModel('byd-m6'); return false;">See Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 3: Denza D9 -->
+            <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.75)), url('https://bydjakarta.info/wp-content/uploads/2025/11/denza-d9-Whale-Sea-Blue.webp');">
+                <div class="container">
+                    <div class="slide-content">
+                        <span class="slide-tag">FLAGSHIP EV MPV</span>
+                        <h1 class="slide-title">BYD DENZA D9</h1>
+                        <p class="slide-desc">MPV Listrik Mewah Premium Untuk Keluarga Modern & Eksekutif Berkelas.</p>
+                        <div class="slide-price">Starts from <strong>IDR 950.000.000</strong></div>
+                        <div class="slide-actions">
+                            <button class="btn btn-primary" onclick="triggerServiceAction('Pre-Book', 'byd-denza-d9')">Pre-Book Now</button>
+                            <button class="btn btn-outline" onclick="switchModel('byd-denza-d9'); return false;">See Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 4: Seal -->
             <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.75)), url('https://bydjakarta.info/wp-content/uploads/2025/04/seal.webp');">
-                <div class="container slide-content">
-                    <span class="slide-tag">SPORT SEDAN EV</span>
-                    <h1 class="slide-title">BYD SEAL</h1>
-                    <p class="slide-desc">Sport Sedan Listrik Berperforma Tinggi dengan Teknologi Baterai Cell-to-Body (CTB).</p>
-                    <div class="slide-price">Starts from <strong>IDR 639.000.000</strong></div>
-                    <div class="slide-actions">
-                        <a href="#form-booking" class="btn btn-primary">Pre-Book Now</a>
-                        <button class="btn btn-outline" onclick="switchModel('byd-seal'); return false;">See Details</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Slide 3: Sealion 7 -->
-            <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.75)), url('https://bydjakarta.info/wp-content/uploads/2025/04/sealion-7-2.webp');">
-                <div class="container slide-content">
-                    <span class="slide-tag">PREMIUM SPORT SUV</span>
-                    <h1 class="slide-title">BYD SEALION 7</h1>
-                    <p class="slide-desc">Sport SUV Listrik Premium dengan Performa Gahar dan Desain Futuristik.</p>
-                    <div class="slide-price">Starts from <strong>IDR 629.000.000</strong></div>
-                    <div class="slide-actions">
-                        <a href="#form-booking" class="btn btn-primary">Pre-Book Now</a>
-                        <button class="btn btn-outline" onclick="switchModel('byd-sealion-7'); return false;">See Details</button>
+                <div class="container">
+                    <div class="slide-content">
+                        <span class="slide-tag">SPORT SEDAN EV</span>
+                        <h1 class="slide-title">BYD SEAL</h1>
+                        <p class="slide-desc">Sport Sedan Listrik Berperforma Tinggi dengan Teknologi Baterai Cell-to-Body (CTB).</p>
+                        <div class="slide-price">Starts from <strong>IDR 639.000.000</strong></div>
+                        <div class="slide-actions">
+                            <button class="btn btn-primary" onclick="triggerServiceAction('Pre-Book', 'byd-seal')">Pre-Book Now</button>
+                            <button class="btn btn-outline" onclick="switchModel('byd-seal'); return false;">See Details</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -223,15 +257,16 @@
             <span class="indicator active" data-slide="0"></span>
             <span class="indicator" data-slide="1"></span>
             <span class="indicator" data-slide="2"></span>
+            <span class="indicator" data-slide="3"></span>
         </div>
     </section>
 
-    <!-- DRIVETRAIN SEGMENT LINEUP TABS (Chery-Style) -->
+    <!-- DRIVETRAIN SEGMENT LINEUP TABS (Chery-Style Clean Grid Layout) -->
     <section class="lineup-section" id="lineup">
         <div class="container">
             <div class="lineup-header">
-                <h2>BYD Vehicles Lineup</h2>
-                <p>Choose your powertrain technology and discover the dream car that suits you.</p>
+                <h2 class="section-title">BYD Vehicles Lineup</h2>
+                <p>Choose your powertrain technology and discover the electric/hybrid model that fits your lifestyle.</p>
                 
                 <div class="lineup-tabs">
                     <button class="lineup-tab active" data-type="bev">BEV (Electric)</button>
@@ -250,7 +285,9 @@
                         <h3>BYD Seal</h3>
                         <div class="card-specs">
                             <span>Sedan Sport</span>
-                            <span>Baterai CTB</span>
+                            <span>CTB Tech</span>
+                            <span>0-100 3.8s</span>
+                            <span>AWD/RWD</span>
                         </div>
                         <div class="card-price">Starts from IDR 639M</div>
                         <span class="card-action">Learn More <i class="fa-solid fa-arrow-right"></i></span>
@@ -266,6 +303,8 @@
                         <div class="card-specs">
                             <span>Sport SUV</span>
                             <span>Ocean Series</span>
+                            <span>Premium Interior</span>
+                            <span>Blade Battery</span>
                         </div>
                         <div class="card-price">Starts from IDR 629M</div>
                         <span class="card-action">Learn More <i class="fa-solid fa-arrow-right"></i></span>
@@ -280,7 +319,9 @@
                         <h3>BYD M6</h3>
                         <div class="card-specs">
                             <span>7-Seater MPV</span>
-                            <span>Electric Family</span>
+                            <span>Family Space</span>
+                            <span>Fast Charging</span>
+                            <span>Smart ADAS</span>
                         </div>
                         <div class="card-price">Starts from IDR 383M</div>
                         <span class="card-action">Learn More <i class="fa-solid fa-arrow-right"></i></span>
@@ -295,7 +336,9 @@
                         <h3>BYD Atto 3</h3>
                         <div class="card-specs">
                             <span>Crossover SUV</span>
-                            <span>Adventure Ready</span>
+                            <span>Sporty Cockpit</span>
+                            <span>480km Range</span>
+                            <span>e-Platform 3.0</span>
                         </div>
                         <div class="card-price">Starts from IDR 415M</div>
                         <span class="card-action">Learn More <i class="fa-solid fa-arrow-right"></i></span>
@@ -310,7 +353,9 @@
                         <h3>BYD Dolphin</h3>
                         <div class="card-specs">
                             <span>Hatchback</span>
-                            <span>Mobilitas Urban</span>
+                            <span>Urban Smart</span>
+                            <span>Agile Ride</span>
+                            <span>490km Range</span>
                         </div>
                         <div class="card-price">Starts from IDR 369M</div>
                         <span class="card-action">Learn More <i class="fa-solid fa-arrow-right"></i></span>
@@ -324,8 +369,10 @@
                     <div class="card-info">
                         <h3>BYD Atto 1</h3>
                         <div class="card-specs">
-                            <span>Kompak EV</span>
-                            <span>Praktis & Hemat</span>
+                            <span>Compact EV</span>
+                            <span>Eco Drive</span>
+                            <span>Modern Style</span>
+                            <span>Urban Hatch</span>
                         </div>
                         <div class="card-price">Starts from IDR 199M</div>
                         <span class="card-action">Learn More <i class="fa-solid fa-arrow-right"></i></span>
@@ -341,6 +388,8 @@
                         <div class="card-specs">
                             <span>Luxury MPV</span>
                             <span>Super Premium</span>
+                            <span>Captain Seats</span>
+                            <span>Flagship EV</span>
                         </div>
                         <div class="card-price">Starts from IDR 950M</div>
                         <span class="card-action">Learn More <i class="fa-solid fa-arrow-right"></i></span>
@@ -360,6 +409,8 @@
                         <div class="card-specs">
                             <span>Hybrid MPV</span>
                             <span>Dual-Mode Tech</span>
+                            <span>Extreme Economy</span>
+                            <span>Dual Power</span>
                         </div>
                         <div class="card-price">Starts from IDR 310M</div>
                         <span class="card-action">Learn More <i class="fa-solid fa-arrow-right"></i></span>
@@ -369,13 +420,14 @@
         </div>
     </section>
 
-    <!-- BYD INNOVATION SPECIALTY GRID (Chery-Style) -->
+    <!-- BYD INNOVATION SPECIALTY GRID (Chery Specialty Style) -->
     <section class="specialty-section" id="specialty">
         <div class="container">
-            <h2>BYD Specialty</h2>
+            <h2 class="section-title">BYD Specialty</h2>
             <p class="specialty-subtitle">Pioneering green mobilities through innovative, state-of-the-art technologies.</p>
             
             <div class="specialty-grid">
+                <!-- Card 1 -->
                 <div class="specialty-card">
                     <div class="specialty-icon-container">
                         <i class="fa-solid fa-battery-three-quarters"></i>
@@ -383,10 +435,11 @@
                     <h3>Blade Battery Technology</h3>
                     <p>BYD's revolutionary Blade Battery sets new industry standards for EV safety, durability, and energy density. It has successfully passed the stringent nail penetration test, guaranteeing absolute peace of mind.</p>
                     <div class="specialty-actions">
-                        <a href="#form-booking" class="btn btn-sm btn-text">Test Drive <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#form-booking" class="btn-text">Test Drive <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
+                <!-- Card 2 -->
                 <div class="specialty-card">
                     <div class="specialty-icon-container">
                         <i class="fa-solid fa-microchip"></i>
@@ -394,10 +447,11 @@
                     <h3>e-Platform 3.0</h3>
                     <p>Designed exclusively for pure electric vehicles, the e-Platform 3.0 integrates the power battery into the vehicle structure, achieving superb stability, aerodynamics, intelligence, and high-efficiency performance.</p>
                     <div class="specialty-actions">
-                        <a href="#form-booking" class="btn btn-sm btn-text">Test Drive <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#form-booking" class="btn-text">Test Drive <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
+                <!-- Card 3 -->
                 <div class="specialty-card">
                     <div class="specialty-icon-container">
                         <i class="fa-solid fa-bolt-lightning"></i>
@@ -405,14 +459,14 @@
                     <h3>Dual Mode (DM-i) Hybrid</h3>
                     <p>BYD's DM-i super hybrid system prioritizes electric power, providing a smooth driving experience with ultra-low fuel consumption, rapid throttle response, and quiet operation like a pure electric car.</p>
                     <div class="specialty-actions">
-                        <a href="#form-booking" class="btn btn-sm btn-text">Test Drive <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#form-booking" class="btn-text">Test Drive <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SPECIFICATION PORTAL (Dynamically Updated details) -->
+    <!-- SPECIFICATION PORTAL (Dynamically Updated details in Chery Style) -->
     <section class="model-portal-section" id="model-portal">
         <div class="container">
             
@@ -447,7 +501,7 @@
 
             <!-- INTERACTIVE GALLERY -->
             <div class="gallery-section">
-                <h3 style="color: var(--secondary); margin-bottom: 20px;"><i class="fa-solid fa-images"></i> Galeri Foto</h3>
+                <h3 style="color: var(--accent); margin-bottom: 24px; text-transform: uppercase;"><i class="fa-solid fa-images"></i> Galeri Foto</h3>
                 <div class="gallery-main">
                     <img src="https://bydjakarta.info/wp-content/uploads/2025/11/byd-denza-.01-600x400.webp" alt="Gallery Main" id="gallery-main-img">
                     <div class="gallery-counter"><span id="current-photo-num">1</span> / 12</div>
@@ -469,15 +523,21 @@
                 
                 <div class="widget-card table-card">
                     <div class="widget-content">
-                        <h3 style="color: var(--secondary); margin-bottom: 15px;">Daftar Varian & Harga OTR</h3>
+                        <h3 style="color: var(--accent); margin-bottom: 20px; text-transform: uppercase;">Daftar Varian & Harga OTR</h3>
                         
                         <table class="widget-pricing-table">
                             <!-- Filled by JS -->
                         </table>
                         
-                        <div class="widget-btn-group">
-                            <a href="#" target="_blank" class="btn btn-success">
-                                <i class="fa-brands fa-whatsapp"></i> Jadwalkan Test Drive
+                        <div class="widget-actions-container">
+                            <button class="btn btn-widget btn-test-drive" onclick="triggerServiceAction('Test Drive')">
+                                <i class="fa-solid fa-car-side"></i> Book Test Drive
+                            </button>
+                            <button class="btn btn-widget btn-pre-book" onclick="triggerServiceAction('Pre-Book')">
+                                <i class="fa-solid fa-file-signature"></i> Pre-Book Now
+                            </button>
+                            <a href="https://wa.me/6287881647878/?text=Saya%20tertarik%20dengan%20mobil%20BYD" target="_blank" class="btn btn-widget btn-wa">
+                                <i class="fa-brands fa-whatsapp"></i> Chat Consultant
                             </a>
                         </div>
                     </div>
@@ -493,8 +553,8 @@
                     <div class="video-container">
                         <iframe id="video-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
-                    <div class="video-action-wrapper" id="video-action-wrapper" style="margin-top: -15px; margin-bottom: 30px;">
-                        <a id="video-youtube-link" href="#" target="_blank" class="btn btn-secondary" style="background-color: #ff0000; color: #ffffff; border-radius: 8px;">
+                    <div class="video-action-wrapper" id="video-action-wrapper" style="margin-top: -10px; margin-bottom: 40px; text-align: left;">
+                        <a id="video-youtube-link" href="#" target="_blank" class="btn btn-secondary" style="background-color: #ff0000; border-color: transparent;">
                             <i class="fa-brands fa-youtube"></i> Tonton Langsung di YouTube
                         </a>
                     </div>
@@ -531,6 +591,13 @@
 
                             <!-- STEP 2: Product Info -->
                             <div class="form-step" data-step="2">
+                                <div class="form-group">
+                                    <label for="form-service">Tipe Layanan <span style="color: var(--primary);">*</span></label>
+                                    <select id="form-service" class="form-control" required>
+                                        <option value="Test Drive">Jadwalkan Test Drive</option>
+                                        <option value="Pre-Book">Pre-Book / Pemesanan</option>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="form-model">Pilih Model Mobil <span style="color: var(--primary);">*</span></label>
                                     <select id="form-model" class="form-control" required>
@@ -587,9 +654,9 @@
 
                             <!-- Form Navigation Buttons -->
                             <div class="form-navigation">
-                                <button type="button" id="prev-step" class="btn btn-secondary" style="display: none;"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
+                                <button type="button" id="prev-step" class="btn btn-outline" style="display: none;"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
                                 <button type="button" id="next-step" class="btn btn-primary">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
-                                <button type="submit" id="submit-form" class="btn btn-success" style="display: none;"><i class="fa-solid fa-check"></i> Kirim ke WhatsApp</button>
+                                <button type="submit" id="submit-form" class="btn btn-secondary" style="display: none; background-color: #10B981; border-color: transparent;"><i class="fa-solid fa-check"></i> Kirim ke WhatsApp</button>
                             </div>
                         </form>
                     </div>
@@ -623,10 +690,12 @@
         </div>
     </section>
 
-    <!-- OTHER VEHICLES SECTION (Slider) -->
+    <!-- OTHER VEHICLES SECTION (Slider in Chery Style) -->
     <section class="other-models">
         <div class="container">
             <h3 class="section-title">Model Mobil BYD Lainnya</h3>
+            <p class="section-subtitle">Discover the other line-ups of green luxury mobilities.</p>
+            
             <div class="models-slider-container">
                 <button class="slider-nav slider-nav-prev"><i class="fa-solid fa-chevron-left"></i></button>
                 <div class="models-slider">
@@ -765,32 +834,23 @@
         </div>
     </section>
 
-    <!-- FOOTER (Chery-Style) -->
+    <!-- FOOTER (Chery-Style Grid) -->
     <footer class="footer" id="contact-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col brand-col">
-                    <img src="https://bydjakarta.info/wp-content/uploads/2025/11/logo-byd.png" alt="BYD Logo" class="footer-logo" style="filter: brightness(0) invert(1); max-height: 40px; margin-bottom: 20px;">
+                    <img src="https://bydjakarta.info/wp-content/uploads/2025/11/logo-byd.png" alt="BYD Logo" class="footer-logo" style="filter: brightness(0) invert(1); max-height: 36px; margin-bottom: 20px;">
                     <p class="brand-text">
                         Dealer Resmi mobil listrik BYD Jabodetabek. Melayani pembelian mobil BYD cash maupun kredit OTR Jabodetabek dengan penawaran diskon terbaik.
                     </p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                    </div>
                 </div>
                 <div class="footer-col">
                     <h4>Models</h4>
                     <ul class="footer-links">
+                        <li><a href="#" onclick="switchModel('byd-denza-d9'); return false;">BYD Denza D9</a></li>
                         <li><a href="#" onclick="switchModel('byd-seal'); return false;">BYD Seal</a></li>
                         <li><a href="#" onclick="switchModel('byd-sealion-7'); return false;">BYD Sealion 7</a></li>
                         <li><a href="#" onclick="switchModel('byd-m6'); return false;">BYD M6</a></li>
-                        <li><a href="#" onclick="switchModel('byd-atto-3'); return false;">BYD Atto 3</a></li>
-                        <li><a href="#" onclick="switchModel('byd-dolphin'); return false;">BYD Dolphin</a></li>
-                        <li><a href="#" onclick="switchModel('byd-atto-1'); return false;">BYD Atto 1</a></li>
-                        <li><a href="#" onclick="switchModel('byd-denza-d9'); return false;">BYD Denza D9</a></li>
                         <li><a href="#" onclick="switchModel('byd-m6-dm'); return false;">BYD M6 DM</a></li>
                     </ul>
                 </div>
@@ -801,13 +861,6 @@
                         <li><a href="#form-booking">Credit Simulation</a></li>
                         <li><a href="#form-booking">Test Drive & Prebooking</a></li>
                         <li><a href="#" class="open-pricelist">BYD Solutions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Get to Know BYD</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">With BYD With Love</a></li>
-                        <li><a href="#">About BYD</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -978,6 +1031,43 @@
             <i class="fa-brands fa-whatsapp"></i>
             <span class="float-tooltip">Chat WhatsApp</span>
         </a>
+    </div>
+
+    <!-- CHERY-STYLE FLOATING SIDE WIDGET -->
+    <div class="floating-side-widget">
+        <div class="side-widget-item" onclick="triggerServiceAction('Test Drive')">
+            <i class="fa-solid fa-car-side"></i>
+            <span>Test Drive</span>
+        </div>
+        <div class="side-widget-item" onclick="triggerServiceAction('Pre-Book')">
+            <i class="fa-solid fa-file-signature"></i>
+            <span>Pre-Book</span>
+        </div>
+        <a href="https://wa.me/6287881647878/?text=Saya%20tertarik%20dengan%20mobil%20BYD" target="_blank" class="side-widget-item wa">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
+    </div>
+
+    <!-- PROMOTIONAL MODAL POPUP (Chery-Style on Load) -->
+    <div class="promo-modal" id="promo-modal">
+        <div class="promo-modal-content">
+            <button class="promo-close-btn" id="promo-close-btn" aria-label="Close Promo Modal">&times;</button>
+            <div class="promo-body">
+                <div class="promo-image">
+                    <img src="https://bydjakarta.info/wp-content/uploads/2025/11/atto-1-1.webp" alt="BYD Atto 1 Highlight">
+                </div>
+                <div class="promo-text-area">
+                    <span class="promo-tag">LIMITED SPECIAL DEAL</span>
+                    <h2>BYD ATTO 1 & M6</h2>
+                    <p>Dapatkan penawaran eksklusif mobil listrik BYD impian Anda. Nikmati promo bunga 0%, DP ringan, dan bonus aksesoris lengkap.</p>
+                    <div class="promo-price-tag">Harga OTR Mulai <strong>IDR 199.000.000</strong></div>
+                    <div class="promo-actions">
+                        <button class="btn btn-primary" id="promo-action-btn">Book Test Drive Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Script to set copyright year -->
